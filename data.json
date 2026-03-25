@@ -1,21 +1,602 @@
 {
-  "last_updated": "2026-03-17T15:30:00",
+  "last_updated": "2026-03-25T10:28:37.767800",
+  "date_used": "昨日",
+  "market_closed": false,
   "commodities": [
-    {"name": "螺纹钢", "symbol": "RB", "change": 1.8, "volume": 1280, "category": "黑色系"},
-    {"name": "铁矿石", "symbol": "I", "change": -2.5, "volume": 950, "category": "黑色系"},
-    {"name": "焦炭", "symbol": "J", "change": -1.2, "volume": 420, "category": "黑色系"},
-    {"name": "铜", "symbol": "CU", "change": 1.2, "volume": 420, "category": "有色金属"},
-    {"name": "铝", "symbol": "AL", "change": 0.8, "volume": 380, "category": "有色金属"},
-    {"name": "锌", "symbol": "ZN", "change": -1.6, "volume": 260, "category": "有色金属"},
-    {"name": "原油", "symbol": "SC", "change": 0.9, "volume": 860, "category": "能源化工"},
-    {"name": "PTA", "symbol": "TA", "change": 1.7, "volume": 350, "category": "能源化工"},
-    {"name": "甲醇", "symbol": "MA", "change": -0.5, "volume": 480, "category": "能源化工"},
-    {"name": "黄金", "symbol": "AU", "change": 0.5, "volume": 280, "category": "贵金属"},
-    {"name": "白银", "symbol": "AG", "change": 0.3, "volume": 320, "category": "贵金属"},
-    {"name": "玉米", "symbol": "C", "change": -0.3, "volume": 150, "category": "农产品"},
-    {"name": "豆粕", "symbol": "M", "change": 1.5, "volume": 280, "category": "农产品"},
-    {"name": "豆油", "symbol": "Y", "change": 0.9, "volume": 220, "category": "农产品"},
-    {"name": "股指", "symbol": "IF", "change": 2.1, "volume": 680, "category": "金融指数"},
-    {"name": "国债", "symbol": "T", "change": 0.2, "volume": 180, "category": "金融指数"}
+    {
+      "name": "豆一",
+      "symbol": "A2605",
+      "change": -0.83,
+      "volume": 14.9,
+      "category": "农产品"
+    },
+    {
+      "name": "铝合金",
+      "symbol": "AD2604",
+      "change": -1.25,
+      "volume": 0.8,
+      "category": "有色金属"
+    },
+    {
+      "name": "沪银",
+      "symbol": "AG2606",
+      "change": -12.56,
+      "volume": 125.9,
+      "category": "其他"
+    },
+    {
+      "name": "沪铝",
+      "symbol": "AL2605",
+      "change": -1.94,
+      "volume": 58.6,
+      "category": "有色金属"
+    },
+    {
+      "name": "氧化铝",
+      "symbol": "AO2605",
+      "change": 1.71,
+      "volume": 74.0,
+      "category": "有色金属"
+    },
+    {
+      "name": "苹果",
+      "symbol": "AP605",
+      "change": -5.38,
+      "volume": 15.5,
+      "category": "其他"
+    },
+    {
+      "name": "沪金",
+      "symbol": "AU2604",
+      "change": -9.55,
+      "volume": 38.6,
+      "category": "其他"
+    },
+    {
+      "name": "豆二",
+      "symbol": "B2605",
+      "change": 0.0,
+      "volume": 13.9,
+      "category": "农产品"
+    },
+    {
+      "name": "胶合板",
+      "symbol": "BB2605",
+      "change": 0.3,
+      "volume": 0.0,
+      "category": "其他"
+    },
+    {
+      "name": "国际铜",
+      "symbol": "BC2604",
+      "change": -2.9,
+      "volume": 0.7,
+      "category": "有色金属"
+    },
+    {
+      "name": "合成橡胶",
+      "symbol": "BR2605",
+      "change": 9.29,
+      "volume": 49.3,
+      "category": "其他"
+    },
+    {
+      "name": "沥青",
+      "symbol": "BU2606",
+      "change": 4.58,
+      "volume": 86.9,
+      "category": "能源化工"
+    },
+    {
+      "name": "纯苯",
+      "symbol": "BZ2605",
+      "change": 10.46,
+      "volume": 3.8,
+      "category": "其他"
+    },
+    {
+      "name": "玉米",
+      "symbol": "C2605",
+      "change": 1.17,
+      "volume": 117.7,
+      "category": "农产品"
+    },
+    {
+      "name": "棉花",
+      "symbol": "CF605",
+      "change": 0.43,
+      "volume": 36.0,
+      "category": "农产品"
+    },
+    {
+      "name": "红枣",
+      "symbol": "CJ605",
+      "change": 0.23,
+      "volume": 9.2,
+      "category": "其他"
+    },
+    {
+      "name": "玉米淀粉",
+      "symbol": "CS2605",
+      "change": 0.25,
+      "volume": 30.5,
+      "category": "农产品"
+    },
+    {
+      "name": "沪铜",
+      "symbol": "CU2605",
+      "change": -2.79,
+      "volume": 21.6,
+      "category": "有色金属"
+    },
+    {
+      "name": "棉纱",
+      "symbol": "CY605",
+      "change": 0.28,
+      "volume": 1.2,
+      "category": "农产品"
+    },
+    {
+      "name": "苯乙烯",
+      "symbol": "EB2605",
+      "change": 9.05,
+      "volume": 83.5,
+      "category": "能源化工"
+    },
+    {
+      "name": "欧线集运",
+      "symbol": "EC2604",
+      "change": 0.69,
+      "volume": 3.6,
+      "category": "其他"
+    },
+    {
+      "name": "乙二醇",
+      "symbol": "EG2605",
+      "change": 4.13,
+      "volume": 86.2,
+      "category": "能源化工"
+    },
+    {
+      "name": "纤维板",
+      "symbol": "FB2605",
+      "change": 1.72,
+      "volume": 0.4,
+      "category": "其他"
+    },
+    {
+      "name": "玻璃",
+      "symbol": "FG605",
+      "change": 2.66,
+      "volume": 134.2,
+      "category": "黑色系"
+    },
+    {
+      "name": "燃油",
+      "symbol": "FU2605",
+      "change": 6.39,
+      "volume": 76.6,
+      "category": "能源化工"
+    },
+    {
+      "name": "热卷",
+      "symbol": "HC2605",
+      "change": 1.0,
+      "volume": 47.2,
+      "category": "黑色系"
+    },
+    {
+      "name": "铁矿石",
+      "symbol": "I2605",
+      "change": 0.43,
+      "volume": 26.3,
+      "category": "黑色系"
+    },
+    {
+      "name": "中证 ",
+      "symbol": "IC2606",
+      "change": -4.29,
+      "volume": 13.1,
+      "category": "其他"
+    },
+    {
+      "name": "沪深 ",
+      "symbol": "IF2606",
+      "change": -3.17,
+      "volume": 8.9,
+      "category": "其他"
+    },
+    {
+      "name": "上证 ",
+      "symbol": "IH2606",
+      "change": -3.13,
+      "volume": 4.5,
+      "category": "其他"
+    },
+    {
+      "name": "中证 ",
+      "symbol": "IM2606",
+      "change": -4.89,
+      "volume": 19.7,
+      "category": "其他"
+    },
+    {
+      "name": "焦炭",
+      "symbol": "J2605",
+      "change": 6.12,
+      "volume": 4.5,
+      "category": "黑色系"
+    },
+    {
+      "name": "鸡蛋",
+      "symbol": "JD2605",
+      "change": 1.0,
+      "volume": 12.8,
+      "category": "农产品"
+    },
+    {
+      "name": "焦煤",
+      "symbol": "JM2605",
+      "change": 10.12,
+      "volume": 169.6,
+      "category": "其他"
+    },
+    {
+      "name": "塑料",
+      "symbol": "L2605",
+      "change": 8.0,
+      "volume": 86.8,
+      "category": "能源化工"
+    },
+    {
+      "name": "塑料月均价",
+      "symbol": "L2605F",
+      "change": 8.13,
+      "volume": 0.8,
+      "category": "能源化工"
+    },
+    {
+      "name": "碳酸锂",
+      "symbol": "LC2605",
+      "change": 3.6,
+      "volume": 22.8,
+      "category": "其他"
+    },
+    {
+      "name": "原木",
+      "symbol": "LG2605",
+      "change": -0.18,
+      "volume": 1.1,
+      "category": "其他"
+    },
+    {
+      "name": "生猪",
+      "symbol": "LH2605",
+      "change": -2.35,
+      "volume": 16.6,
+      "category": "农产品"
+    },
+    {
+      "name": "低硫燃油",
+      "symbol": "LU2605",
+      "change": 6.94,
+      "volume": 13.0,
+      "category": "能源化工"
+    },
+    {
+      "name": "豆粕",
+      "symbol": "M2605",
+      "change": -0.73,
+      "volume": 126.0,
+      "category": "农产品"
+    },
+    {
+      "name": "甲醇",
+      "symbol": "MA605",
+      "change": 6.99,
+      "volume": 218.2,
+      "category": "能源化工"
+    },
+    {
+      "name": "沪镍",
+      "symbol": "NI2605",
+      "change": -0.14,
+      "volume": 46.4,
+      "category": "有色金属"
+    },
+    {
+      "name": "号胶",
+      "symbol": "NR2605",
+      "change": 1.48,
+      "volume": 6.8,
+      "category": "其他"
+    },
+    {
+      "name": "菜油",
+      "symbol": "OI605",
+      "change": 0.75,
+      "volume": 22.5,
+      "category": "农产品"
+    },
+    {
+      "name": "双胶纸",
+      "symbol": "OP2604",
+      "change": 1.01,
+      "volume": 0.3,
+      "category": "其他"
+    },
+    {
+      "name": "棕榈油",
+      "symbol": "P2605",
+      "change": 2.31,
+      "volume": 46.5,
+      "category": "农产品"
+    },
+    {
+      "name": "沪铅",
+      "symbol": "PB2605",
+      "change": 0.64,
+      "volume": 6.3,
+      "category": "有色金属"
+    },
+    {
+      "name": "钯",
+      "symbol": "PD2606",
+      "change": -11.12,
+      "volume": 0.7,
+      "category": "其他"
+    },
+    {
+      "name": "短纤",
+      "symbol": "PF606",
+      "change": 5.24,
+      "volume": 20.4,
+      "category": "其他"
+    },
+    {
+      "name": "LPG",
+      "symbol": "PG2605",
+      "change": 8.59,
+      "volume": 22.4,
+      "category": "能源化工"
+    },
+    {
+      "name": "花生",
+      "symbol": "PK605",
+      "change": 0.61,
+      "volume": 6.0,
+      "category": "农产品"
+    },
+    {
+      "name": "丙烯",
+      "symbol": "PL605",
+      "change": 11.53,
+      "volume": 2.1,
+      "category": "其他"
+    },
+    {
+      "name": "聚丙烯",
+      "symbol": "PP2605",
+      "change": 8.58,
+      "volume": 101.2,
+      "category": "其他"
+    },
+    {
+      "name": "聚丙烯月均价",
+      "symbol": "PP2605F",
+      "change": 8.64,
+      "volume": 0.6,
+      "category": "其他"
+    },
+    {
+      "name": "瓶片",
+      "symbol": "PR605",
+      "change": 4.91,
+      "volume": 10.0,
+      "category": "其他"
+    },
+    {
+      "name": "多晶硅",
+      "symbol": "PS2605",
+      "change": -6.17,
+      "volume": 1.3,
+      "category": "其他"
+    },
+    {
+      "name": "铂",
+      "symbol": "PT2606",
+      "change": -10.2,
+      "volume": 1.8,
+      "category": "其他"
+    },
+    {
+      "name": "对二甲苯",
+      "symbol": "PX605",
+      "change": 7.31,
+      "volume": 59.6,
+      "category": "其他"
+    },
+    {
+      "name": "螺纹钢",
+      "symbol": "RB2605",
+      "change": 0.99,
+      "volume": 101.1,
+      "category": "黑色系"
+    },
+    {
+      "name": "菜粕",
+      "symbol": "RM605",
+      "change": -0.99,
+      "volume": 60.6,
+      "category": "农产品"
+    },
+    {
+      "name": "粳米",
+      "symbol": "RR2605",
+      "change": 0.17,
+      "volume": 0.1,
+      "category": "其他"
+    },
+    {
+      "name": "菜籽",
+      "symbol": "RS609",
+      "change": 1.36,
+      "volume": 0.0,
+      "category": "其他"
+    },
+    {
+      "name": "橡胶",
+      "symbol": "RU2605",
+      "change": 0.91,
+      "volume": 32.6,
+      "category": "其他"
+    },
+    {
+      "name": "纯碱",
+      "symbol": "SA605",
+      "change": 4.49,
+      "volume": 140.1,
+      "category": "黑色系"
+    },
+    {
+      "name": "原油",
+      "symbol": "SC2605",
+      "change": 7.89,
+      "volume": 14.1,
+      "category": "能源化工"
+    },
+    {
+      "name": "硅铁",
+      "symbol": "SF605",
+      "change": 3.17,
+      "volume": 32.4,
+      "category": "黑色系"
+    },
+    {
+      "name": "烧碱",
+      "symbol": "SH605",
+      "change": 3.54,
+      "volume": 45.5,
+      "category": "其他"
+    },
+    {
+      "name": "工业硅",
+      "symbol": "SI2605",
+      "change": 1.42,
+      "volume": 22.1,
+      "category": "有色金属"
+    },
+    {
+      "name": "锰硅",
+      "symbol": "SM605",
+      "change": 2.44,
+      "volume": 66.8,
+      "category": "黑色系"
+    },
+    {
+      "name": "沪锡",
+      "symbol": "SN2604",
+      "change": -4.14,
+      "volume": 26.8,
+      "category": "有色金属"
+    },
+    {
+      "name": "纸浆",
+      "symbol": "SP2605",
+      "change": 0.46,
+      "volume": 32.7,
+      "category": "其他"
+    },
+    {
+      "name": "白糖",
+      "symbol": "SR605",
+      "change": 0.26,
+      "volume": 40.3,
+      "category": "其他"
+    },
+    {
+      "name": "不锈钢",
+      "symbol": "SS2605",
+      "change": -0.21,
+      "volume": 17.5,
+      "category": "其他"
+    },
+    {
+      "name": "十年国债",
+      "symbol": "T2606",
+      "change": -0.1,
+      "volume": 11.2,
+      "category": "金融指数"
+    },
+    {
+      "name": "PTA",
+      "symbol": "TA605",
+      "change": 7.28,
+      "volume": 171.9,
+      "category": "能源化工"
+    },
+    {
+      "name": "五年国债",
+      "symbol": "TF2606",
+      "change": -0.06,
+      "volume": 10.8,
+      "category": "金融指数"
+    },
+    {
+      "name": "三十年国债",
+      "symbol": "TL2606",
+      "change": 0.04,
+      "volume": 9.4,
+      "category": "金融指数"
+    },
+    {
+      "name": "二年国债",
+      "symbol": "TS2606",
+      "change": -0.02,
+      "volume": 5.2,
+      "category": "金融指数"
+    },
+    {
+      "name": "尿素",
+      "symbol": "UR605",
+      "change": 2.34,
+      "volume": 39.0,
+      "category": "其他"
+    },
+    {
+      "name": "PVC",
+      "symbol": "V2605",
+      "change": 6.4,
+      "volume": 207.7,
+      "category": "其他"
+    },
+    {
+      "name": "PVC月均价",
+      "symbol": "V2605F",
+      "change": 6.52,
+      "volume": 2.4,
+      "category": "其他"
+    },
+    {
+      "name": "线材",
+      "symbol": "WR2605",
+      "change": 1.34,
+      "volume": 0.0,
+      "category": "其他"
+    },
+    {
+      "name": "豆油",
+      "symbol": "Y2605",
+      "change": 1.3,
+      "volume": 27.1,
+      "category": "农产品"
+    },
+    {
+      "name": "沪锌",
+      "symbol": "ZN2605",
+      "change": -0.59,
+      "volume": 12.0,
+      "category": "有色金属"
+    }
   ]
 }

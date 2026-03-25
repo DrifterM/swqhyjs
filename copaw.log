@@ -1494,3 +1494,205 @@ openai.RateLimitError: Error code: 429 - {'error': {'message': "You have exceede
   "msgs_len": 1,
   "msgs_str": "[Msg(id='msg_e159ae90-68c0-4b56-8933-2bbed1982a1c', name='user', content=[{'type': 'text', 'text': '打开网址，显示：\\n404\\nFile not found\\n\\nThe site configured at this address does not contain the requested file.\\n\\nIf this is your site, make sure that the filename case matches the URL as well as any file ..."
 }
+2026-03-25 09:59:39 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_56b5ac8c-8742-495a-ab1f-dddc20c1e896', name='user', content=[{'type': 'text', 'text': '我分享给同事之后，有的同事可以打开，有的同事无论手机微信、手机浏览器、电脑微信或浏览器都打不开，电脑比较慢是正常的，因为公司的有线网络有限制，但有不少人手机都打开了，但就是有的同事打不开，显示“Safari浏览器打不开该网页，因为已丢失网络连接”。是什么情况呢？'}], role='user', metadata=None, timestamp='2026-03-25 09:59:39.654',..."
+}
+2026-03-25 10:01:31 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_09df1a06-fbda-49bc-97d2-a5ef042bf51b', name='user', content=[{'type': 'text', 'text': '暂时先不做离线包了，因为我已经部署好了，所以在加下来的修改、升级过程中，你是不是尽量不要新建新的文件夹了？而是在“prototype_v2_expanded/ 子目录”中进行？'}], role='user', metadata=None, timestamp='2026-03-25 10:01:31.992', invocation_id='None')]..."
+}
+2026-03-25 10:04:11 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_aaf2bca0-35f2-4fff-888c-f47f17455bf1', name='user', content=[{'type': 'text', 'text': '昨天我在“C:\\\\Users\\\\H3C\\\\.copaw\\\\data_source”中建了一个excel文件，是存放数据的，是连接了同花顺数据库，可以更新数据的，你昨天也发现了可以用python的excel库等工具。因为之前做的页面只是测试模拟数据，那现在就要把这个excel的数据放在里面了，这个文件就是数据源。这个futures_data文件，里面的日期是通过函数自动更新的。你是否可以看到里面的数..."
+}
+2026-03-25 10:10:06 | Marked 247 messages as compacted
+2026-03-25 10:14:43 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_1382f46f-973c-45ae-a232-2fb34ddc88ff', name='user', content=[{'type': 'text', 'text': '现在修改脚本以兼容GBK编码环境'}], role='user', metadata=None, timestamp='2026-03-25 10:14:43.476', invocation_id='None')]..."
+}
+2026-03-25 10:27:05 | Error in query handler: Error code: 429 - {'error': {'message': 'We have to rate limit you for model deepseek-ai/DeepSeek-V3.2. If you need higher limits, please consider other (commercial) API providers.', 'request_id': '21f96a8b-97f6-40b0-8b7e-2be69783a73a'}}
+(Details:  C:\Users\H3C\AppData\Local\Temp\copaw_query_error_bhhca1so.json)
+Traceback (most recent call last):
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\app\runner\runner.py", line 161, in query_handler
+    async for msg, last in stream_printing_messages(
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\pipeline\_functional.py", line 192, in stream_printing_messages
+    raise exception from None
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_base.py", line 455, in __call__
+    reply_msg = await self.reply(*args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\agents\react_agent.py", line 537, in reply
+    return await super().reply(msg=msg, structured_model=structured_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\tracing\_trace.py", line 392, in wrapper
+    return await func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_react_agent.py", line 437, in reply
+    msg_reasoning = await self._reasoning(tool_choice)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\agents\react_agent.py", line 504, in _reasoning
+    return await super()._reasoning(tool_choice=tool_choice)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_react_agent.py", line 563, in _reasoning
+    res = await self.model(
+          ^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\tracing\_trace.py", line 604, in async_wrapper
+    return await func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\model\_openai_model.py", line 289, in __call__
+    response = await self.client.chat.completions.create(**kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\openai\_base_client.py", line 1884, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\openai\_base_client.py", line 1669, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'We have to rate limit you for model deepseek-ai/DeepSeek-V3.2. If you need higher limits, please consider other (commercial) API providers.', 'request_id': '21f96a8b-97f6-40b0-8b7e-2be69783a73a'}}
+2026-03-25 10:27:52 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_95fe9d87-5107-4f9a-9735-d8a4394161e5', name='user', content=[{'type': 'text', 'text': '刚刚我的免费额度用完了，先换了个模型，请继续直接用Python脚本调试：'}], role='user', metadata=None, timestamp='2026-03-25 10:27:52.882', invocation_id='None')]..."
+}
+2026-03-25 10:41:48 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_91dca7dd-70c6-4b6c-860c-da7b4583ca14', name='user', content=[{'type': 'text', 'text': '网页是否已经更新，为什么我打开后还是之前的16个品种？成功提取到的85个期货品种实时数据可以用来作柱状图么？'}], role='user', metadata=None, timestamp='2026-03-25 10:41:48.006', invocation_id='None')]..."
+}
+2026-03-25 10:55:26 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_fc295e13-935c-4c06-b68b-5ce682cdc080', name='user', content=[{'type': 'text', 'text': '为何85个品种不可能放在一个图里，一定要分类或只展示前十名？'}], role='user', metadata=None, timestamp='2026-03-25 10:55:26.155', invocation_id='None')]..."
+}
+2026-03-25 10:56:27 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_31dad84f-5155-4666-b74c-1b7c22541c59', name='user', content=[{'type': 'text', 'text': '好，那就先做这样的三层架构看板吧，用我提供的真实数据'}], role='user', metadata=None, timestamp='2026-03-25 10:56:27.177', invocation_id='None')]..."
+}
+2026-03-25 11:02:07 | Error in query handler: <5000202> InternalError.Algo.ModelServingError.ModelServingUnknownError: An error occurred in model serving. The error message it sent us is [{"request_id":"c11fd232-628a-9477-80a7-fe563257d9fb","service_id":"v-a36a8e8f","status_code":500,"status_name":"InternalError","status_message":"Receive batching backend response failed!"}]
+(Details:  C:\Users\H3C\AppData\Local\Temp\copaw_query_error_7_yphrbx.json)
+Traceback (most recent call last):
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\app\runner\runner.py", line 161, in query_handler
+    async for msg, last in stream_printing_messages(
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\pipeline\_functional.py", line 192, in stream_printing_messages
+    raise exception from None
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_base.py", line 455, in __call__
+    reply_msg = await self.reply(*args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\agents\react_agent.py", line 537, in reply
+    return await super().reply(msg=msg, structured_model=structured_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\tracing\_trace.py", line 392, in wrapper
+    return await func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_react_agent.py", line 437, in reply
+    msg_reasoning = await self._reasoning(tool_choice)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\agents\react_agent.py", line 504, in _reasoning
+    return await super()._reasoning(tool_choice=tool_choice)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_agent_meta.py", line 120, in async_wrapper
+    current_output = await original_func(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\agent\_react_agent.py", line 581, in _reasoning
+    async for content_chunk in res:
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\providers\openai_chat_model_compat.py", line 196, in _parse_openai_stream_response
+    async for parsed in super()._parse_openai_stream_response(
+  File "D:\CoPaw\venv\Lib\site-packages\agentscope\model\_openai_model.py", line 349, in _parse_openai_stream_response
+    async for item in stream:
+  File "D:\CoPaw\venv\Lib\site-packages\copaw\providers\openai_chat_model_compat.py", line 161, in __anext__
+    item = await self._ctx_stream.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\openai\_streaming.py", line 155, in __anext__
+    return await self._iterator.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CoPaw\venv\Lib\site-packages\openai\_streaming.py", line 205, in __stream__
+    raise APIError(
+openai.APIError: <5000202> InternalError.Algo.ModelServingError.ModelServingUnknownError: An error occurred in model serving. The error message it sent us is [{"request_id":"c11fd232-628a-9477-80a7-fe563257d9fb","service_id":"v-a36a8e8f","status_code":500,"status_name":"InternalError","status_message":"Receive batching backend response failed!"}]
+2026-03-25 11:09:18 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_75a5f525-6e11-4980-b1d2-90b8a622460d', name='user', content=[{'type': 'text', 'text': '刚刚免费调用额度用完了，现在换了个模型，可以继续了'}], role='user', metadata=None, timestamp='2026-03-25 11:09:18.169', invocation_id='None')]..."
+}
+2026-03-25 11:10:43 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_5910684c-2ec8-4932-bac6-82be816ef608', name='user', content=[{'type': 'text', 'text': '刚刚免费调用额度用完了，现在换了个模型，可以继续了'}], role='user', metadata=None, timestamp='2026-03-25 11:10:43.447', invocation_id='None')]..."
+}
+2026-03-25 11:11:03 | Assistant message count mismatch after formatting (97 before, 96 after). Skipping reasoning_content injection.
+2026-03-25 11:12:25 | Assistant message count mismatch after formatting (98 before, 97 after). Skipping reasoning_content injection.
+2026-03-25 11:13:39 | Handle agent query:
+{
+  "session_id": "1773378819010",
+  "user_id": "default",
+  "channel": "console",
+  "msgs_len": 1,
+  "msgs_str": "[Msg(id='msg_cb14a001-6ce0-45bd-bb71-e71bfeec7252', name='user', content=[{'type': 'text', 'text': '你帮我移动和更新吧'}], role='user', metadata=None, timestamp='2026-03-25 11:13:39.428', invocation_id='None')]..."
+}
+2026-03-25 11:13:40 | Assistant message count mismatch after formatting (99 before, 98 after). Skipping reasoning_content injection.
+2026-03-25 11:13:51 | Assistant message count mismatch after formatting (100 before, 99 after). Skipping reasoning_content injection.
+2026-03-25 11:14:09 | Assistant message count mismatch after formatting (101 before, 100 after). Skipping reasoning_content injection.
+2026-03-25 11:14:18 | Assistant message count mismatch after formatting (102 before, 101 after). Skipping reasoning_content injection.
+2026-03-25 11:14:31 | Assistant message count mismatch after formatting (103 before, 102 after). Skipping reasoning_content injection.
+2026-03-25 11:14:53 | Assistant message count mismatch after formatting (104 before, 103 after). Skipping reasoning_content injection.
+2026-03-25 11:15:02 | Assistant message count mismatch after formatting (105 before, 104 after). Skipping reasoning_content injection.
+2026-03-25 11:15:11 | Assistant message count mismatch after formatting (106 before, 105 after). Skipping reasoning_content injection.
+2026-03-25 11:15:27 | Assistant message count mismatch after formatting (107 before, 106 after). Skipping reasoning_content injection.
+2026-03-25 11:15:47 | Assistant message count mismatch after formatting (108 before, 107 after). Skipping reasoning_content injection.
