@@ -1,0 +1,21 @@
+{
+  "last_updated": "2026-03-17T15:30:00",
+  "commodities": [
+    {"name": "螺纹钢", "symbol": "RB", "change": 1.8, "volume": 1280, "category": "黑色系"},
+    {"name": "铁矿石", "symbol": "I", "change": -2.5, "volume": 950, "category": "黑色系"},
+    {"name": "焦炭", "symbol": "J", "change": -1.2, "volume": 420, "category": "黑色系"},
+    {"name": "铜", "symbol": "CU", "change": 1.2, "volume": 420, "category": "有色金属"},
+    {"name": "铝", "symbol": "AL", "change": 0.8, "volume": 380, "category": "有色金属"},
+    {"name": "锌", "symbol": "ZN", "change": -1.6, "volume": 260, "category": "有色金属"},
+    {"name": "原油", "symbol": "SC", "change": 0.9, "volume": 860, "category": "能源化工"},
+    {"name": "PTA", "symbol": "TA", "change": 1.7, "volume": 350, "category": "能源化工"},
+    {"name": "甲醇", "symbol": "MA", "change": -0.5, "volume": 480, "category": "能源化工"},
+    {"name": "黄金", "symbol": "AU", "change": 0.5, "volume": 280, "category": "贵金属"},
+    {"name": "白银", "symbol": "AG", "change": 0.3, "volume": 320, "category": "贵金属"},
+    {"name": "玉米", "symbol": "C", "change": -0.3, "volume": 150, "category": "农产品"},
+    {"name": "豆粕", "symbol": "M", "change": 1.5, "volume": 280, "category": "农产品"},
+    {"name": "豆油", "symbol": "Y", "change": 0.9, "volume": 220, "category": "农产品"},
+    {"name": "股指", "symbol": "IF", "change": 2.1, "volume": 680, "category": "金融指数"},
+    {"name": "国债", "symbol": "T", "change": 0.2, "volume": 180, "category": "金融指数"}
+  ]
+}
