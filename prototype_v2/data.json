@@ -1,0 +1,11 @@
+{
+  "last_updated": "2026-03-17T15:30:00",
+  "commodities": [
+    {"name": "螺纹钢", "symbol": "RB", "change": 1.8, "volume": 1280, "category": "黑色系"},
+    {"name": "铜", "symbol": "CU", "change": 1.2, "volume": 420, "category": "有色金属"},
+    {"name": "原油", "symbol": "SC", "change": 0.9, "volume": 860, "category": "能源化工"},
+    {"name": "黄金", "symbol": "AU", "change": 0.5, "volume": 280, "category": "贵金属"},
+    {"name": "玉米", "symbol": "C", "change": -0.3, "volume": 150, "category": "农产品"},
+    {"name": "股指", "symbol": "IF", "change": 2.1, "volume": 680, "category": "金融指数"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "template": {
+    "title1": "附件2",
+    "title2": "期货交易咨询业务档案卷内文件目录",
+    "header_row": ["序号", "文件题名", "责任者", "经办人", "日期", "材料性质", "起止页号", "备注"],
+    "column_widths": [
+      0.5,
+      3.0,
+      0.6,
+      0.6,
+      0.7,
+      0.7,
+      0.6,
+      0.8
+    ]
+  },
+  "archive_code_pattern": "SWQH-YW·YYYY-D30-3-1009-XXXX",
+  "default_font": "宋体",
+  "bold_font": "黑体"
+}

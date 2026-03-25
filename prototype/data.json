@@ -1,0 +1,33 @@
+{
+  "last_updated": "2026-03-18T15:30:00",
+  "rankings": {
+    "gains": [
+      {"commodity": "螺纹钢", "change": "+3.2%", "volume": "1,280万手"},
+      {"commodity": "原油", "change": "+2.8%", "volume": "860万手"},
+      {"commodity": "铜", "change": "+1.9%", "volume": "420万手"},
+      {"commodity": "PTA", "change": "+1.7%", "volume": "350万手"},
+      {"commodity": "豆粕", "change": "+1.5%", "volume": "280万手"}
+    ],
+    "losses": [
+      {"commodity": "铁矿石", "change": "-2.5%", "volume": "380万手"},
+      {"commodity": "玻璃", "change": "-1.8%", "volume": "120万手"},
+      {"commodity": "锌", "change": "-1.6%", "volume": "90万手"},
+      {"commodity": "PVC", "change": "-1.4%", "volume": "150万手"},
+      {"commodity": "白糖", "change": "-1.2%", "volume": "180万手"}
+    ],
+    "volume": [
+      {"commodity": "螺纹钢", "volume": "1,280万手", "change": "+3.2%"},
+      {"commodity": "原油", "volume": "860万手", "change": "+2.8%"},
+      {"commodity": "铜", "volume": "420万手", "change": "+1.9%"},
+      {"commodity": "铁矿石", "volume": "380万手", "change": "-2.5%"},
+      {"commodity": "PTA", "volume": "350万手", "change": "+1.7%"}
+    ],
+    "open_interest": [
+      {"commodity": "螺纹钢", "change": "+12万手", "price_change": "+3.2%"},
+      {"commodity": "豆粕", "change": "+8万手", "price_change": "+1.5%"},
+      {"commodity": "原油", "change": "+6万手", "price_change": "+2.8%"},
+      {"commodity": "铁矿石", "change": "-5万手", "price_change": "-2.5%"},
+      {"commodity": "锌", "change": "-3万手", "price_change": "-1.6%"}
+    ]
+  }
+}

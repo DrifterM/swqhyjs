@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>申万期货 · 核心品种监控</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            color: #2c3e50;
+        }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .update-time { 
+            text-align: right; 
+            color: #7f8c8d; 
+            font-size: 0.9em; 
+            margin: 10px 0 30px;
+        }
+        .charts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            height: 800px; /* 固定高度 */
+        }
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 350px; /* 为每个图表设置固定高度 */
+            position: relative;
+        }
+        .chart-container canvas {
+            position: absolute !important;
+            left: 0;
+            top: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .chart-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .charts { grid-template-columns: 1fr; }
+            h1 { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>申万期货 · 核心品种监控</h1>
+            <p class="subtitle">主力合约行情排名</p>
+            <p class="update-time">数据更新：<span id="update-time">2026-03-17 15:30</span></p>
+        </header>
+
+        <div class="charts">
+            <div class="chart-container">
+                <h3 class="chart-title">📈 涨跌幅排名</h3>
+                <canvas id="gainsChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">📊 成交量排名</h3>
+                <canvas id="volumeChart"></canvas>
+            </div>
+        </div>
+
+        <footer>
+            <p>数据来源：各大期货交易所公开信息 | 更新频率：交易日15:30</p>
+            <p>© 2026 申万期货研究所 · 数字化服务</p>
+        </footer>
+    </div>
+
+    <script>
+        // 加载数据
+        const data = {
+            "last_updated": "2026-03-17T15:30:00",
+            "commodities": [
+                {"name": "螺纹钢", "symbol": "RB", "change": 1.8, "volume": 1280, "category": "黑色系"},
+                {"name": "铜", "symbol": "CU", "change": 1.2, "volume": 420, "category": "有色金属"},
+                {"name": "原油", "symbol": "SC", "change": 0.9, "volume": 860, "category": "能源化工"},
+                {"name": "黄金", "symbol": "AU", "change": 0.5, "volume": 280, "category": "贵金属"},
+                {"name": "玉米", "symbol": "C", "change": -0.3, "volume": 150, "category": "农产品"},
+                {"name": "股指", "symbol": "IF", "change": 2.1, "volume": 680, "category": "金融指数"}
+            ]
+        };
+
+        // 排序数据
+        const sortedByChange = [...data.commodities].sort((a, b) => b.change - a.change);
+        const sortedByVolume = [...data.commodities].sort((a, b) => b.volume - a.volume);
+
+        // 颜色映射
+        const categoryColors = {
+            "黑色系": "#2c3e50",
+            "有色金属": "#e67e22",
+            "能源化工": "#e74c3c",
+            "贵金属": "#f1c40f",
+            "农产品": "#27ae60",
+            "金融指数": "#3498db"
+        };
+
+        // 创建涨跌幅图表
+        new Chart(document.getElementById('gainsChart'), {
+            type: 'bar',
+            data: {
+                labels: sortedByChange.map(item => `${item.name} (${item.symbol})`),
+                datasets: [{
+                    label: '涨跌幅 (%)',
+                    data: sortedByChange.map(item => item.change),
+                    backgroundColor: sortedByChange.map(item => categoryColors[item.category]),
+                    borderColor: '#fff',
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 500
+                },
+                transitions: {
+                    active: {
+                        animation: {
+                            duration: 250
+                        }
+                    }
+                },
+                animation: {
+                    duration: 500
+                },
+                transitions: {
+                    active: {
+                        animation: {
+                            duration: 250
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.parsed.y}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 创建成交量图表
+        new Chart(document.getElementById('volumeChart'), {
+            type: 'bar',
+            data: {
+                labels: sortedByVolume.map(item => `${item.name} (${item.symbol})`),
+                datasets: [{
+                    label: '成交量 (万手)',
+                    data: sortedByVolume.map(item => item.volume),
+                    backgroundColor: sortedByVolume.map(item => categoryColors[item.category]),
+                    borderColor: '#fff',
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 500
+                },
+                transitions: {
+                    active: {
+                        animation: {
+                            duration: 250
+                        }
+                    }
+                },
+                animation: {
+                    duration: 500
+                },
+                transitions: {
+                    active: {
+                        animation: {
+                            duration: 250
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '万';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.parsed.y}万手`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 自动更新时间
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('update-time').textContent = 
+                now.getFullYear() + '-' + 
+                String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                String(now.getDate()).padStart(2, '0') + ' ' + 
+                String(now.getHours()).padStart(2, '0') + ':' + 
+                String(now.getMinutes()).padStart(2, '0');
+        }
+        updateTime();
+        setInterval(updateTime, 60000);
+    </script>
+</body>
+</html>
