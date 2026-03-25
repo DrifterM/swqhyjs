@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>申万期货 · 全品种监控</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            color: #2c3e50;
+        }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .update-time { 
+            text-align: right; 
+            color: #7f8c8d; 
+            font-size: 0.9em; 
+            margin: 10px 0 30px;
+        }
+        .charts {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 450px;
+            position: relative;
+        }
+        .chart-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .details-container {
+            grid-column: 1 / -1;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-height: 300px;
+        }
+        .category-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .category-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .category-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        .commodity-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .commodity-item {
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: all 0.3s;
+        }
+        .commodity-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .commodity-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .commodity-change {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .commodity-change.positive {
+            color: #27ae60;
+        }
+        footer {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+        @media (max-width: 1200px) {
+            .charts { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .charts { grid-template-columns: 1fr; }
+            h1 { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>申万期货 · 全品种监控</h1>
+            <p class="subtitle">主力合约行情排名（含所有主要品种）</p>
+            <p class="update-time">数据更新：<span id="update-time">-</span></p>
+        </header>
+
+        <div class="charts">
+            <div class="chart-container">
+                <h3 class="chart-title">📊 市场板块分布</h3>
+                <canvas id="pieChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">📈 涨跌幅TOP 10</h3>
+                <canvas id="gainsChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">📊 成交量TOP 10</h3>
+                <canvas id="volumeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="details-container">
+            <h3 class="chart-title">🔍 品种详情</h3>
+            <div class="category-selector" id="categorySelector">
+                <!-- 类别按钮将通过JS动态生成 -->
+            </div>
+            <div class="commodity-list" id="commodityList">
+                <!-- 品种详情将通过JS动态生成 -->
+            </div>
+        </div>
+
+        <footer>
+            <p>数据来源：各大期货交易所公开信息 | 更新频率：交易日15:30</p>
+            <p>© 2026 申万期货研究所 · 数字化服务</p>
+        </footer>
+    </div>
+
+    <script>
+        // 加载数据
+        fetch('./data.json')
+            .then(response => response.json())
+            .then(data => {
+                // 更新时间
+                document.getElementById('update-time').textContent = 
+                    data.last_updated.replace('T', ' ').substring(0, 16);
+
+                // 颜色映射
+                const categoryColors = {
+                    "黑色系": "#2c3e50",
+                    "有色金属": "#e67e22",
+                    "能源化工": "#e74c3c",
+                    "贵金属": "#f1c40f",
+                    "农产品": "#27ae60",
+                    "金融指数": "#3498db",
+                    "其他": "#95a5a6"
+                };
+
+                // 1. 市场板块分布 (饼图)
+                const categoryVolumes = {};
+                data.commodities.forEach(item => {
+                    if (!categoryVolumes[item.category]) {
+                        categoryVolumes[item.category] = 0;
+                    }
+                    categoryVolumes[item.category] += item.volume;
+                });
+
+                new Chart(document.getElementById('pieChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(categoryVolumes),
+                        datasets: [{
+                            data: Object.values(categoryVolumes),
+                            backgroundColor: Object.keys(categoryVolumes).map(
+                                category => categoryColors[category]
+                            ),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right'
+                            }
+                        }
+                    }
+                });
+
+                // 2. 涨跌幅TOP 10
+                const sortedByChange = [...data.commodities]
+                    .sort((a, b) => b.change - a.change)
+                    .slice(0, 10);
+
+                new Chart(document.getElementById('gainsChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: sortedByChange.map(item => 
+                            `${item.name} (${item.symbol})`
+                        ),
+                        datasets: [{
+                            label: '涨跌幅 (%)',
+                            data: sortedByChange.map(item => item.change),
+                            backgroundColor: sortedByChange.map(
+                                item => categoryColors[item.category]
+                            ),
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 500
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.parsed.y}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // 3. 成交量TOP 10
+                const sortedByVolume = [...data.commodities]
+                    .sort((a, b) => b.volume - a.volume)
+                    .slice(0, 10);
+
+                new Chart(document.getElementById('volumeChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: sortedByVolume.map(item => 
+                            `${item.name} (${item.symbol})`
+                        ),
+                        datasets: [{
+                            label: '成交量 (万手)',
+                            data: sortedByVolume.map(item => item.volume),
+                            backgroundColor: sortedByVolume.map(
+                                item => categoryColors[item.category]
+                            ),
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 500
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '万';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.parsed.y}万手`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // 4. 品种详情
+                const categories = [...new Set(data.commodities.map(item => item.category))];
+                const categorySelector = document.getElementById('categorySelector');
+                const commodityList = document.getElementById('commodityList');
+
+                // 创建类别按钮
+                categories.forEach(category => {
+                    const btn = document.createElement('button');
+                    btn.className = 'category-btn';
+                    btn.textContent = category;
+                    btn.style.backgroundColor = categoryColors[category];
+                    btn.style.color = 'white';
+                    
+                    btn.addEventListener('click', () => {
+                        // 更新按钮状态
+                        document.querySelectorAll('.category-btn').forEach(b => 
+                            b.classList.remove('active'));
+                        btn.classList.add('active');
+
+                        // 显示该类别的品种
+                        displayCommodities(category);
+                    });
+                    
+                    categorySelector.appendChild(btn);
+                });
+
+                // 默认显示第一个类别
+                if (categories.length > 0) {
+                    document.querySelector('.category-btn').classList.add('active');
+                    displayCommodities(categories[0]);
+                }
+
+                function displayCommodities(category) {
+                    commodityList.innerHTML = '';
+                    
+                    const categoryItems = data.commodities.filter(
+                        item => item.category === category
+                    ).sort((a, b) => b.volume - a.volume);
+
+                    categoryItems.forEach(item => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'commodity-item';
+                        
+                        const changeClass = item.change >= 0 ? 'positive' : '';
+                        
+                        itemDiv.innerHTML = `
+                            <div class="commodity-name">${item.name} (${item.symbol})</div>
+                            <div>涨跌幅: <span class="commodity-change ${changeClass}">${item.change >= 0 ? '+' : ''}${item.change}%</span></div>
+                            <div>成交量: ${item.volume}万手</div>
+                        `;
+                        
+                        commodityList.appendChild(itemDiv);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('加载数据失败:', error);
+                document.getElementById('update-time').textContent = '数据加载失败';
+            });
+    </script>
+</body>
+</html>
